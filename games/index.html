@@ -1,0 +1,841 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>休闲小游戏 | 弓长广隶的小站</title><meta name="author" content="弓长广隶"><meta name="copyright" content="弓长广隶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="打开就能玩的博客休闲小游戏合集">
+<meta property="og:type" content="website">
+<meta property="og:title" content="休闲小游戏">
+<meta property="og:url" content="http://example.com/games/index.html">
+<meta property="og:site_name" content="弓长广隶的小站">
+<meta property="og:description" content="打开就能玩的博客休闲小游戏合集">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar-catgirl.png">
+<meta property="article:published_time" content="2026-05-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-07T06:00:19.043Z">
+<meta property="article:author" content="弓长广隶">
+<meta property="article:tag" content="博客,技术,生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar-catgirl.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/games/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#6C63FF","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '休闲小游戏',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar-catgirl.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="page type-games" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">弓长广隶的小站</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 小游戏</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">休闲小游戏</h1></header><main class="layout hide-aside" id="content-inner"><div id="page"><div class="page-title">休闲小游戏</div><div class="container" id="article-container">
+<style>
+  #games-page {
+    --game-ink: #27313f;
+    --game-muted: #6c7480;
+    --game-line: rgba(39, 49, 63, 0.12);
+    --game-panel: rgba(255, 255, 255, 0.92);
+    --game-blue: #2f80ed;
+    --game-green: #20a67a;
+    --game-rose: #ef5b78;
+    --game-gold: #f2a93b;
+    --game-violet: #7a62d9;
+    color: var(--game-ink);
+  }
+
+  #games-page * {
+    box-sizing: border-box;
+  }
+
+  .games-hero {
+    display: grid;
+    gap: 1rem;
+    padding: 1.4rem 0 1.2rem;
+  }
+
+  .games-title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .games-lead {
+    margin: 0;
+    max-width: 46rem;
+    color: var(--game-muted);
+    line-height: 1.8;
+  }
+
+  .games-tabs {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin: 0.4rem 0 1rem;
+  }
+
+  .game-tab,
+  .game-btn,
+  .memory-card {
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .game-tab {
+    min-height: 2.6rem;
+    padding: 0.55rem 0.95rem;
+    border: 1px solid var(--game-line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--game-ink);
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  }
+
+  .game-tab:hover,
+  .game-tab.is-active {
+    transform: translateY(-1px);
+    border-color: rgba(47, 128, 237, 0.45);
+    background: rgba(47, 128, 237, 0.1);
+  }
+
+  .game-panel {
+    display: none;
+    border: 1px solid var(--game-line);
+    border-radius: 8px;
+    background: var(--game-panel);
+    box-shadow: 0 12px 32px rgba(31, 45, 61, 0.08);
+    overflow: hidden;
+  }
+
+  .game-panel.is-active {
+    display: block;
+  }
+
+  .game-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .game-stage {
+    display: grid;
+    place-items: center;
+    min-height: 24rem;
+    border-radius: 8px;
+    background:
+      linear-gradient(90deg, rgba(39, 49, 63, 0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(39, 49, 63, 0.05) 1px, transparent 1px),
+      #f7f9fc;
+    background-size: 24px 24px;
+  }
+
+  .game-side {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .game-stat {
+    padding: 0.85rem;
+    border: 1px solid var(--game-line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .game-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--game-muted);
+    font-size: 0.86rem;
+  }
+
+  .game-value {
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .game-btn {
+    width: 100%;
+    min-height: 2.7rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 8px;
+    background: var(--game-blue);
+    color: #fff;
+    font-weight: 700;
+    transition: filter 0.18s ease, transform 0.18s ease;
+  }
+
+  .game-btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  .game-tip {
+    margin: 0;
+    color: var(--game-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .game-result {
+    min-height: 1.6rem;
+    margin: 0;
+    color: var(--game-rose);
+    font-weight: 700;
+  }
+
+  .g2048-board {
+    display: grid;
+    grid-template-columns: repeat(4, 4.5rem);
+    grid-template-rows: repeat(4, 4.5rem);
+    gap: 0.55rem;
+    padding: 0.55rem;
+    border-radius: 8px;
+    background: #b8ad9f;
+    touch-action: none;
+  }
+
+  .g2048-tile {
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: rgba(238, 228, 218, 0.45);
+    color: #786f66;
+    font-size: 1.45rem;
+    font-weight: 800;
+  }
+
+  .g2048-tile[data-value="2"] { background: #eee4da; }
+  .g2048-tile[data-value="4"] { background: #ede0c8; }
+  .g2048-tile[data-value="8"] { background: #f2b179; color: #fff; }
+  .g2048-tile[data-value="16"] { background: #f59563; color: #fff; }
+  .g2048-tile[data-value="32"] { background: #f67c5f; color: #fff; }
+  .g2048-tile[data-value="64"] { background: #f65e3b; color: #fff; }
+  .g2048-tile[data-value="128"] { background: #edcf72; color: #fff; font-size: 1.25rem; }
+  .g2048-tile[data-value="256"] { background: #edcc61; color: #fff; font-size: 1.25rem; }
+  .g2048-tile[data-value="512"] { background: #39a78e; color: #fff; font-size: 1.25rem; }
+  .g2048-tile[data-value="1024"],
+  .g2048-tile[data-value="2048"] { background: #2f80ed; color: #fff; font-size: 1.05rem; }
+
+  .snake-wrap {
+    width: min(100%, 25rem);
+    aspect-ratio: 1;
+  }
+
+  #snake-board {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 8px solid #263445;
+    border-radius: 8px;
+    background: #eef7f2;
+  }
+
+  .snake-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 2.8rem);
+    justify-content: center;
+    gap: 0.45rem;
+  }
+
+  .snake-pad button {
+    min-height: 2.6rem;
+    border: 1px solid var(--game-line);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--game-ink);
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .snake-pad .pad-up {
+    grid-column: 2;
+  }
+
+  .memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 4.8rem);
+    gap: 0.65rem;
+  }
+
+  .memory-card {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: #27313f;
+    color: transparent;
+    font-size: 2rem;
+    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  }
+
+  .memory-card.is-open,
+  .memory-card.is-matched {
+    background: #fff;
+    color: var(--card-color, var(--game-blue));
+    transform: rotateY(180deg);
+  }
+
+  .memory-card.is-matched {
+    box-shadow: inset 0 0 0 3px rgba(32, 166, 122, 0.35);
+  }
+
+  @media (max-width: 760px) {
+    .games-title {
+      font-size: 1.6rem;
+    }
+
+    .game-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .game-stage {
+      min-height: 18rem;
+      padding: 0.75rem;
+    }
+
+    .g2048-board {
+      grid-template-columns: repeat(4, minmax(3.55rem, 1fr));
+      grid-template-rows: repeat(4, minmax(3.55rem, 1fr));
+      width: min(100%, 19rem);
+    }
+
+    .g2048-tile {
+      min-height: 3.55rem;
+      font-size: 1.15rem;
+    }
+
+    .memory-grid {
+      width: min(100%, 20rem);
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
+
+<div id="games-page">
+  <section class="games-hero">
+    <h1 class="games-title">休闲小游戏</h1>
+    <p class="games-lead">写代码、看文章累了就切到这里松一口气。当前收纳了数字合成、贪吃蛇和翻牌记忆，手机和电脑都能玩。</p>
+  </section>
+
+  <div class="games-tabs" role="tablist" aria-label="小游戏列表">
+    <button class="game-tab is-active" type="button" data-game-tab="g2048">2048</button>
+    <button class="game-tab" type="button" data-game-tab="snake">贪吃蛇</button>
+    <button class="game-tab" type="button" data-game-tab="memory">翻牌记忆</button>
+  </div>
+
+  <section class="game-panel is-active" id="g2048-panel">
+    <div class="game-shell">
+      <div class="game-stage">
+        <div class="g2048-board" id="g2048-board" aria-label="2048 棋盘"></div>
+      </div>
+      <aside class="game-side">
+        <div class="game-stat"><span class="game-label">分数</span><strong class="game-value" id="g2048-score">0</strong></div>
+        <button class="game-btn" type="button" id="g2048-new">重新开始</button>
+        <p class="game-tip">电脑用方向键，手机可以在棋盘上滑动。相同数字碰到一起会合并。</p>
+        <p class="game-result" id="g2048-result"></p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="game-panel" id="snake-panel">
+    <div class="game-shell">
+      <div class="game-stage">
+        <div class="snake-wrap"><canvas id="snake-board" width="400" height="400" aria-label="贪吃蛇棋盘"></canvas></div>
+      </div>
+      <aside class="game-side">
+        <div class="game-stat"><span class="game-label">分数</span><strong class="game-value" id="snake-score">0</strong></div>
+        <button class="game-btn" type="button" id="snake-start">开始 / 暂停</button>
+        <button class="game-btn" type="button" id="snake-new">重新开始</button>
+        <div class="snake-pad" aria-label="方向按钮">
+          <button class="pad-up" type="button" data-dir="up">↑</button>
+          <button type="button" data-dir="left">←</button>
+          <button type="button" data-dir="down">↓</button>
+          <button type="button" data-dir="right">→</button>
+        </div>
+        <p class="game-tip">方向键或按钮控制移动，吃到方块会变长。撞墙或撞到自己就结束。</p>
+        <p class="game-result" id="snake-result"></p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="game-panel" id="memory-panel">
+    <div class="game-shell">
+      <div class="game-stage">
+        <div class="memory-grid" id="memory-grid" aria-label="翻牌记忆棋盘"></div>
+      </div>
+      <aside class="game-side">
+        <div class="game-stat"><span class="game-label">步数</span><strong class="game-value" id="memory-moves">0</strong></div>
+        <button class="game-btn" type="button" id="memory-new">重新洗牌</button>
+        <p class="game-tip">每次翻开两张，配对成功会保留。尽量用更少步数找出全部图案。</p>
+        <p class="game-result" id="memory-result"></p>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const $ = (selector) => document.querySelector(selector);
+  const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+  $$('.game-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      $$('.game-tab').forEach((item) => item.classList.toggle('is-active', item === tab));
+      $$('.game-panel').forEach((panel) => panel.classList.toggle('is-active', panel.id === `${tab.dataset.gameTab}-panel`));
+      if (tab.dataset.gameTab === 'snake') drawSnake();
+    });
+  });
+
+  let g2048Grid = [];
+  let g2048Score = 0;
+  let touchStart = null;
+  const g2048Board = $('#g2048-board');
+
+  function start2048() {
+    g2048Grid = Array.from({ length: 4 }, () => Array(4).fill(0));
+    g2048Score = 0;
+    $('#g2048-result').textContent = '';
+    add2048Tile();
+    add2048Tile();
+    render2048();
+  }
+
+  function add2048Tile() {
+    const empty = [];
+    g2048Grid.forEach((row, r) => row.forEach((value, c) => {
+      if (!value) empty.push([r, c]);
+    }));
+    if (!empty.length) return;
+    const [r, c] = empty[Math.floor(Math.random() * empty.length)];
+    g2048Grid[r][c] = Math.random() < 0.9 ? 2 : 4;
+  }
+
+  function render2048() {
+    g2048Board.innerHTML = '';
+    g2048Grid.flat().forEach((value) => {
+      const tile = document.createElement('div');
+      tile.className = 'g2048-tile';
+      if (value) {
+        tile.dataset.value = value;
+        tile.textContent = value;
+      }
+      g2048Board.appendChild(tile);
+    });
+    $('#g2048-score').textContent = g2048Score;
+  }
+
+  function merge2048(line) {
+    const packed = line.filter(Boolean);
+    for (let i = 0; i < packed.length - 1; i += 1) {
+      if (packed[i] === packed[i + 1]) {
+        packed[i] *= 2;
+        g2048Score += packed[i];
+        packed.splice(i + 1, 1);
+      }
+    }
+    while (packed.length < 4) packed.push(0);
+    return packed;
+  }
+
+  function move2048(direction) {
+    const before = JSON.stringify(g2048Grid);
+    if (direction === 'left' || direction === 'right') {
+      g2048Grid = g2048Grid.map((row) => {
+        const source = direction === 'left' ? row : [...row].reverse();
+        const merged = merge2048(source);
+        return direction === 'left' ? merged : merged.reverse();
+      });
+    } else {
+      for (let c = 0; c < 4; c += 1) {
+        const column = g2048Grid.map((row) => row[c]);
+        const source = direction === 'up' ? column : column.reverse();
+        const merged = merge2048(source);
+        const finalColumn = direction === 'up' ? merged : merged.reverse();
+        finalColumn.forEach((value, r) => { g2048Grid[r][c] = value; });
+      }
+    }
+    if (JSON.stringify(g2048Grid) !== before) {
+      add2048Tile();
+      render2048();
+      if (!canMove2048()) $('#g2048-result').textContent = '棋盘满了，本局结束。';
+    }
+  }
+
+  function canMove2048() {
+    for (let r = 0; r < 4; r += 1) {
+      for (let c = 0; c < 4; c += 1) {
+        const value = g2048Grid[r][c];
+        if (!value || value === g2048Grid[r]?.[c + 1] || value === g2048Grid[r + 1]?.[c]) return true;
+      }
+    }
+    return false;
+  }
+
+  $('#g2048-new').addEventListener('click', start2048);
+  g2048Board.addEventListener('touchstart', (event) => {
+    const touch = event.changedTouches[0];
+    touchStart = { x: touch.clientX, y: touch.clientY };
+  }, { passive: true });
+  g2048Board.addEventListener('touchend', (event) => {
+    if (!touchStart) return;
+    const touch = event.changedTouches[0];
+    const dx = touch.clientX - touchStart.x;
+    const dy = touch.clientY - touchStart.y;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) > 24) move2048(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+    touchStart = null;
+  }, { passive: true });
+
+  const snakeCanvas = $('#snake-board');
+  const snakeCtx = snakeCanvas.getContext('2d');
+  let snake = [];
+  let snakeFood = {};
+  let snakeDir = 'right';
+  let snakeNextDir = 'right';
+  let snakeTimer = null;
+  let snakeScore = 0;
+  const snakeSize = 20;
+
+  function resetSnake() {
+    snake = [{ x: 8, y: 10 }, { x: 7, y: 10 }, { x: 6, y: 10 }];
+    snakeDir = 'right';
+    snakeNextDir = 'right';
+    snakeScore = 0;
+    $('#snake-score').textContent = snakeScore;
+    $('#snake-result').textContent = '';
+    placeFood();
+    pauseSnake();
+    drawSnake();
+  }
+
+  function placeFood() {
+    do {
+      snakeFood = {
+        x: Math.floor(Math.random() * snakeSize),
+        y: Math.floor(Math.random() * snakeSize)
+      };
+    } while (snake.some((part) => part.x === snakeFood.x && part.y === snakeFood.y));
+  }
+
+  function setSnakeDirection(direction) {
+    const opposite = { up: 'down', down: 'up', left: 'right', right: 'left' };
+    if (direction !== opposite[snakeDir]) snakeNextDir = direction;
+  }
+
+  function stepSnake() {
+    snakeDir = snakeNextDir;
+    const head = { ...snake[0] };
+    if (snakeDir === 'up') head.y -= 1;
+    if (snakeDir === 'down') head.y += 1;
+    if (snakeDir === 'left') head.x -= 1;
+    if (snakeDir === 'right') head.x += 1;
+    const hitWall = head.x < 0 || head.x >= snakeSize || head.y < 0 || head.y >= snakeSize;
+    const hitSelf = snake.some((part) => part.x === head.x && part.y === head.y);
+    if (hitWall || hitSelf) {
+      pauseSnake();
+      $('#snake-result').textContent = `游戏结束，得分 ${snakeScore}。`;
+      return;
+    }
+    snake.unshift(head);
+    if (head.x === snakeFood.x && head.y === snakeFood.y) {
+      snakeScore += 10;
+      $('#snake-score').textContent = snakeScore;
+      placeFood();
+    } else {
+      snake.pop();
+    }
+    drawSnake();
+  }
+
+  function drawSnake() {
+    if (!snakeCtx) return;
+    const cell = snakeCanvas.width / snakeSize;
+    snakeCtx.clearRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+    snakeCtx.fillStyle = '#eef7f2';
+    snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+    snakeCtx.fillStyle = '#ef5b78';
+    snakeCtx.fillRect(snakeFood.x * cell + 3, snakeFood.y * cell + 3, cell - 6, cell - 6);
+    snake.forEach((part, index) => {
+      snakeCtx.fillStyle = index === 0 ? '#20a67a' : '#2f80ed';
+      snakeCtx.fillRect(part.x * cell + 2, part.y * cell + 2, cell - 4, cell - 4);
+    });
+  }
+
+  function pauseSnake() {
+    clearInterval(snakeTimer);
+    snakeTimer = null;
+  }
+
+  $('#snake-start').addEventListener('click', () => {
+    if (snakeTimer) {
+      pauseSnake();
+    } else {
+      snakeTimer = setInterval(stepSnake, 140);
+    }
+  });
+  $('#snake-new').addEventListener('click', resetSnake);
+  $$('.snake-pad button').forEach((button) => button.addEventListener('click', () => setSnakeDirection(button.dataset.dir)));
+
+  const memoryIcons = ['★', '●', '▲', '■', '◆', '✚', '☀', '✦'];
+  const memoryColors = ['#2f80ed', '#20a67a', '#ef5b78', '#f2a93b', '#7a62d9', '#00a6a6', '#d45d39', '#4b8b3b'];
+  let memoryOpen = [];
+  let memoryLocked = false;
+  let memoryMoves = 0;
+
+  function startMemory() {
+    const cards = [...memoryIcons, ...memoryIcons]
+      .map((icon, index) => ({ icon, color: memoryColors[index % memoryColors.length], id: `${icon}-${index}` }))
+      .sort(() => Math.random() - 0.5);
+    const grid = $('#memory-grid');
+    grid.innerHTML = '';
+    memoryOpen = [];
+    memoryLocked = false;
+    memoryMoves = 0;
+    $('#memory-moves').textContent = memoryMoves;
+    $('#memory-result').textContent = '';
+    cards.forEach((card) => {
+      const button = document.createElement('button');
+      button.className = 'memory-card';
+      button.type = 'button';
+      button.dataset.icon = card.icon;
+      button.style.setProperty('--card-color', card.color);
+      button.textContent = card.icon;
+      button.setAttribute('aria-label', '记忆卡片');
+      button.addEventListener('click', () => flipMemory(button));
+      grid.appendChild(button);
+    });
+  }
+
+  function flipMemory(card) {
+    if (memoryLocked || card.classList.contains('is-open') || card.classList.contains('is-matched')) return;
+    card.classList.add('is-open');
+    memoryOpen.push(card);
+    if (memoryOpen.length !== 2) return;
+    memoryMoves += 1;
+    $('#memory-moves').textContent = memoryMoves;
+    const [first, second] = memoryOpen;
+    if (first.dataset.icon === second.dataset.icon) {
+      first.classList.add('is-matched');
+      second.classList.add('is-matched');
+      memoryOpen = [];
+      if ($$('.memory-card.is-matched').length === 16) $('#memory-result').textContent = `全部配对成功，用了 ${memoryMoves} 步。`;
+      return;
+    }
+    memoryLocked = true;
+    setTimeout(() => {
+      first.classList.remove('is-open');
+      second.classList.remove('is-open');
+      memoryOpen = [];
+      memoryLocked = false;
+    }, 650);
+  }
+
+  $('#memory-new').addEventListener('click', startMemory);
+
+  document.addEventListener('keydown', (event) => {
+    const map = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right' };
+    const direction = map[event.key];
+    if (!direction) return;
+    const activePanel = $('.game-panel.is-active')?.id;
+    if (activePanel === 'g2048-panel') {
+      event.preventDefault();
+      move2048(direction);
+    }
+    if (activePanel === 'snake-panel') {
+      event.preventDefault();
+      setSnakeDirection(direction);
+    }
+  });
+
+  start2048();
+  resetSnake();
+  startMemory();
+})();
+</script>
+
+</div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 弓长广隶</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div><div class="footer_custom_text">用心记录，认真生活 ❤️</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://your-twikoo.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://your-twikoo.vercel.app',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    GLOBAL_CONFIG_SITE.pageType === 'post' && getCount()
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
