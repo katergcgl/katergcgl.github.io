@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/avatar-catgirl.png">
 <meta property="article:published_time" content="2026-05-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-05-07T06:13:30.093Z">
+<meta property="article:modified_time" content="2026-05-07T06:22:37.593Z">
 <meta property="article:author" content="弓长广隶">
 <meta property="article:tag" content="博客,技术,生活">
 <meta name="twitter:card" content="summary">
@@ -406,57 +406,6 @@ btf.addGlobalFn('pjaxSend', () => {
     box-shadow: inset 0 0 0 3px rgba(32, 166, 122, 0.35);
   }
 
-  .online-board {
-    display: grid;
-    grid-template-columns: repeat(3, 6rem);
-    grid-template-rows: repeat(3, 6rem);
-    gap: 0.65rem;
-  }
-
-  .online-cell {
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(39, 49, 63, 0.14);
-    border-radius: 8px;
-    background: #fff;
-    color: var(--game-blue);
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1;
-    cursor: pointer;
-    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-  }
-
-  .online-cell:hover {
-    transform: translateY(-1px);
-    border-color: rgba(47, 128, 237, 0.5);
-    background: rgba(47, 128, 237, 0.06);
-  }
-
-  .online-cell[data-mark="O"] {
-    color: var(--game-rose);
-  }
-
-  .online-form {
-    display: grid;
-    gap: 0.55rem;
-  }
-
-  .online-input {
-    width: 100%;
-    min-height: 2.7rem;
-    padding: 0.55rem 0.75rem;
-    border: 1px solid var(--game-line);
-    border-radius: 8px;
-    background: #fff;
-    color: var(--game-ink);
-    font: inherit;
-  }
-
-  .online-code {
-    user-select: all;
-    overflow-wrap: anywhere;
-  }
 
   @media (max-width: 760px) {
     .games-title {
@@ -488,16 +437,6 @@ btf.addGlobalFn('pjaxSend', () => {
       grid-template-columns: repeat(4, 1fr);
     }
 
-    .online-board {
-      width: min(100%, 20rem);
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-    }
-
-    .online-cell {
-      min-height: 5rem;
-      font-size: 2.5rem;
-    }
   }
 </style>
 
@@ -511,7 +450,6 @@ btf.addGlobalFn('pjaxSend', () => {
     <button class="game-tab is-active" type="button" data-game-tab="g2048">2048</button>
     <button class="game-tab" type="button" data-game-tab="snake">贪吃蛇</button>
     <button class="game-tab" type="button" data-game-tab="memory">翻牌记忆</button>
-    <button class="game-tab" type="button" data-game-tab="online">联机井字棋</button>
   </div>
 
   <section class="game-panel is-active" id="g2048-panel">
@@ -563,34 +501,8 @@ btf.addGlobalFn('pjaxSend', () => {
     </div>
   </section>
 
-  <section class="game-panel" id="online-panel">
-    <div class="game-shell">
-      <div class="game-stage">
-        <div class="online-board" id="online-board" aria-label="联机井字棋棋盘"></div>
-      </div>
-      <aside class="game-side">
-        <div class="game-stat">
-          <span class="game-label">我的棋子</span>
-          <strong class="game-value" id="online-role">未连接</strong>
-        </div>
-        <div class="game-stat">
-          <span class="game-label">房间码</span>
-          <strong class="game-value online-code" id="online-room">未创建</strong>
-        </div>
-        <button class="game-btn" type="button" id="online-create">创建房间</button>
-        <div class="online-form">
-          <input class="online-input" id="online-room-input" type="text" placeholder="输入朋友发来的房间码" autocomplete="off" />
-          <button class="game-btn" type="button" id="online-join">加入房间</button>
-        </div>
-        <button class="game-btn" type="button" id="online-restart">重新开局</button>
-        <p class="game-tip">创建房间后把房间码发给朋友。双方保持页面打开，就可以在线对战。</p>
-        <p class="game-result" id="online-status"></p>
-      </aside>
-    </div>
-  </section>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
 <script>
 (() => {
   const $ = (selector) => document.querySelector(selector);
@@ -849,184 +761,6 @@ btf.addGlobalFn('pjaxSend', () => {
 
   $('#memory-new').addEventListener('click', startMemory);
 
-  const onlineBoard = $('#online-board');
-  const wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-  let onlinePeer = null;
-  let onlineConn = null;
-  let onlineRole = '';
-  let onlineHost = false;
-  let onlineState = {
-    board: Array(9).fill(''),
-    turn: 'X',
-    winner: '',
-    ready: false
-  };
-
-  function setOnlineStatus(text) {
-    $('#online-status').textContent = text;
-  }
-
-  function renderOnline() {
-    onlineBoard.innerHTML = '';
-    onlineState.board.forEach((mark, index) => {
-      const cell = document.createElement('button');
-      cell.className = 'online-cell';
-      cell.type = 'button';
-      cell.dataset.index = index;
-      cell.dataset.mark = mark;
-      cell.textContent = mark;
-      cell.setAttribute('aria-label', mark ? `第 ${index + 1} 格，${mark}` : `第 ${index + 1} 格，空`);
-      cell.addEventListener('click', () => playOnline(index));
-      onlineBoard.appendChild(cell);
-    });
-    $('#online-role').textContent = onlineRole || '未连接';
-    if (!onlineConn) return;
-    if (onlineState.winner === 'draw') setOnlineStatus('平局，本轮结束。');
-    else if (onlineState.winner) setOnlineStatus(`${onlineState.winner} 赢了，本轮结束。`);
-    else setOnlineStatus(onlineState.turn === onlineRole ? '轮到你了。' : '等待对方落子。');
-  }
-
-  function checkOnlineWinner(board) {
-    const line = wins.find(([a, b, c]) => board[a] && board[a] === board[b] && board[a] === board[c]);
-    if (line) return board[line[0]];
-    return board.every(Boolean) ? 'draw' : '';
-  }
-
-  function resetOnlineState() {
-    onlineState = {
-      board: Array(9).fill(''),
-      turn: 'X',
-      winner: '',
-      ready: Boolean(onlineConn)
-    };
-  }
-
-  function sendOnlineState() {
-    if (onlineConn?.open) onlineConn.send({ type: 'state', state: onlineState });
-  }
-
-  function applyOnlineMove(index, mark) {
-    if (!onlineState.ready || onlineState.winner || onlineState.turn !== mark || onlineState.board[index]) return false;
-    onlineState.board[index] = mark;
-    onlineState.winner = checkOnlineWinner(onlineState.board);
-    onlineState.turn = mark === 'X' ? 'O' : 'X';
-    return true;
-  }
-
-  function playOnline(index) {
-    if (!onlineConn) {
-      setOnlineStatus('请先创建或加入房间。');
-      return;
-    }
-    if (onlineHost) {
-      if (applyOnlineMove(index, 'X')) {
-        sendOnlineState();
-        renderOnline();
-      }
-      return;
-    }
-    if (onlineState.turn === 'O' && !onlineState.board[index] && onlineConn.open) {
-      onlineConn.send({ type: 'move', index });
-    }
-  }
-
-  function bindOnlineConnection(conn) {
-    onlineConn = conn;
-    conn.on('open', () => {
-      onlineState.ready = true;
-      setOnlineStatus(onlineHost ? '朋友已连接，你先手。' : '已加入房间，等待房主先手。');
-      if (onlineHost) sendOnlineState();
-      renderOnline();
-    });
-    conn.on('data', (message) => {
-      if (message.type === 'state') {
-        onlineState = message.state;
-        renderOnline();
-      }
-      if (message.type === 'move' && onlineHost && applyOnlineMove(message.index, 'O')) {
-        sendOnlineState();
-        renderOnline();
-      }
-      if (message.type === 'restart') {
-        resetOnlineState();
-        sendOnlineState();
-        renderOnline();
-      }
-    });
-    conn.on('close', () => {
-      onlineConn = null;
-      onlineState.ready = false;
-      setOnlineStatus('连接已断开，可以重新创建或加入房间。');
-      renderOnline();
-    });
-  }
-
-  function createOnlineRoom() {
-    if (!window.Peer) {
-      setOnlineStatus('联机库加载失败，请刷新页面后重试。');
-      return;
-    }
-    onlinePeer?.destroy();
-    onlineHost = true;
-    onlineRole = 'X';
-    resetOnlineState();
-    onlinePeer = new Peer();
-    onlinePeer.on('open', (id) => {
-      $('#online-room').textContent = id;
-      setOnlineStatus('房间已创建，把房间码发给朋友。');
-      renderOnline();
-    });
-    onlinePeer.on('connection', (conn) => {
-      if (onlineConn) {
-        conn.close();
-        return;
-      }
-      bindOnlineConnection(conn);
-    });
-    onlinePeer.on('error', (error) => setOnlineStatus(`联机服务异常：${error.type || '连接失败'}`));
-  }
-
-  function joinOnlineRoom() {
-    if (!window.Peer) {
-      setOnlineStatus('联机库加载失败，请刷新页面后重试。');
-      return;
-    }
-    const room = $('#online-room-input').value.trim();
-    if (!room) {
-      setOnlineStatus('请输入房间码。');
-      return;
-    }
-    onlinePeer?.destroy();
-    onlineHost = false;
-    onlineRole = 'O';
-    resetOnlineState();
-    onlinePeer = new Peer();
-    onlinePeer.on('open', () => {
-      $('#online-room').textContent = room;
-      setOnlineStatus('正在加入房间...');
-      bindOnlineConnection(onlinePeer.connect(room, { reliable: true }));
-    });
-    onlinePeer.on('error', (error) => setOnlineStatus(`联机服务异常：${error.type || '连接失败'}`));
-    renderOnline();
-  }
-
-  $('#online-create').addEventListener('click', createOnlineRoom);
-  $('#online-join').addEventListener('click', joinOnlineRoom);
-  $('#online-restart').addEventListener('click', () => {
-    if (!onlineConn) {
-      resetOnlineState();
-      renderOnline();
-      return;
-    }
-    if (onlineHost) {
-      resetOnlineState();
-      sendOnlineState();
-      renderOnline();
-    } else if (onlineConn.open) {
-      onlineConn.send({ type: 'restart' });
-    }
-  });
-
   document.addEventListener('keydown', (event) => {
     const map = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right' };
     const direction = map[event.key];
@@ -1045,7 +779,6 @@ btf.addGlobalFn('pjaxSend', () => {
   start2048();
   resetSnake();
   startMemory();
-  renderOnline();
 })();
 </script>
 
